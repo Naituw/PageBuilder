@@ -1,0 +1,9 @@
+#application {
+	height: 100%;
+}
+
+#application > header {
+	height: 44px;
+	background-color: #4679bd;
+	border-bottom: 1px solid #1B3155;
+}

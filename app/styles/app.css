@@ -1,8 +1,4 @@
-/* Put your CSS here */
-html, body {
-    margin: 20px;
-}
-
-@keyframes domChanged { from { background: yellow; } }
-@-webkit-keyframes domChanged { from { background: yellow; } }
-.ember-view { animation: domChanged 1s; -webkit-animation: domChanged 1s; }
+@import url('app.base.css');
+@import url('app.application.css');
+@import url('app.editor.css');
+@import url('app.cards.css');

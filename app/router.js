@@ -3,9 +3,14 @@ var Router = Ember.Router.extend(); // ensure we don't share routes between all 
 Router.map(function() {
   this.route('component-test');
   this.route('helper-test');
-  // this.resource('posts', function() {
-  //   this.route('new');
-  // });
+  this.resource('pages');
+  this.resource('page', {path: '/pages/:page_id'}, function(){
+    
+  });
+});
+
+Router.reopen({
+  location: 'history',
 });
 
 export default Router;
