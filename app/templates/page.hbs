@@ -3,13 +3,20 @@
 		
 	</section>
 	<section id="editor-canvas">
-		<section id="simulator" class="selectable selected">
+		<section id="simulator" {{bindAttr class=":selectable pageSelected:selected"}} {{action selectPage}}>
 			<header>
 				<h3>{{title_top}}</h3>
 			</header>
 		</section>
 	</section>
 	<section id="editor-inspector">
-		
+		<div id="inspector-configs">
+			{{#each config in selectedItem.configurables}}
+				<div class="inspector-config">
+					<h4>{{config.name}}</h4>
+					{{view 'config-container' config=config targetModel=this}}
+				</div>
+			{{/each}}
+		</div>
 	</section>
 </section>

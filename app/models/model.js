@@ -1,5 +1,5 @@
 var PBModel = Ember.Model.extend({
-	configurable: Ember.hasMany('configurable'),
+	configurables: Ember.hasMany('configurable'),
 });
 
 export default PBModel;

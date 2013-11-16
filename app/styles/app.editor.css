@@ -83,9 +83,57 @@
 #editor-inspector {
 	position: absolute;
 	right: 0;
-	width: 280px;
+	width: 240px;
 	top: 0;
 	bottom: 0;
 	background-color: #F6F6F6;
 	border-left: 1px solid #999999;
+
+	padding: 0 20px;
+}
+
+#inspector-configs {
+	padding-top: 50px;
+}
+
+.inspector-config {
+	width: 100%;
+	padding: 10px 0;
+	border-bottom: 1px solid #aaa;
+}
+.inspector-config > h4 {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.config-container-view {
+	width: 100%;
+	padding-top: 8px;
+}
+
+.config-container-view input {
+	padding: 0 6px;
+	width: 226px;
+	height: 26px;
+	outline: 0 none;
+	border: 1px solid #aaa;
+}
+.config-container-view input:hover, .config-container-view input:active, .config-container-view input:focus {
+	border-color: #4578C2;
+}
+
+.config-container-view select {
+	width: 240px;
+	height: 26px;
+}
+.config-container-view textarea {
+	padding: 6px;
+	width: 226px;
+	height: 80px;
+	resize: none;
+	outline: none;
+	border: 1px solid #aaa;
+}
+.config-container-view textarea:hover, .config-container-view textarea:active, .config-container-view textarea:focus {
+	border-color: #4578C2;
 }

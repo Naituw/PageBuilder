@@ -12,13 +12,15 @@ Card.FIXTURES = [{
 	'title_top': '理想国际大厦',
 	'show_style': 0,
 	'cards': [],
-	'configurable': [],
+	'configurables': [],
 }, {
 	'id': 1001,
 	'title_top': '朔黄铁路大厦',
 	'show_style': 0,
 	'cards': [],
-	'configurable': [],
+	'configurables': [],
 }];
+
+Ember.Card = Card;
 
 export default Card;
