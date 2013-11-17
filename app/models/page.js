@@ -2,14 +2,21 @@ import PBModel from 'appkit/models/model';
 
 var attr = Ember.attr;
 var Page = PBModel.extend({
+	containerid: attr('string'),
 	title_top: attr('string'),
 	show_style: attr('number'),
 	page_type: attr('string'),
 	shared_text: attr('string'),
 	shared_text_qrcode: attr('string'),
 	cards: Ember.hasMany('card'),
-	
-	configurables: [{
+
+	configurables: function(){
+		return Page.CONFIGURABLES;
+	}.property('Page.CONFIGURABLES'),
+});
+
+Page.reopenClass({
+	CONFIGURABLES: [{
 		name: '标题',
 		path: 'title_top',
 		viewType: 'text-field',
@@ -54,19 +61,18 @@ var Page = PBModel.extend({
 });
 
 Page.adapter = Ember.FixtureAdapter.create();
+Page.primaryKey = 'containerid';
 
 Page.FIXTURES = [{
-	'id': 1000,
+	'containerid': 1000,
 	'title_top': '理想国际大厦',
 	'show_style': 0,
 	'cards': [],
 }, {
-	'id': 1001,
+	'containerid': 1001,
 	'title_top': '朔黄铁路大厦',
 	'show_style': 0,
 	'cards': [],
 }];
 
-Ember.Page = Page;
-
-export default Ember.Page;
+export default Page;

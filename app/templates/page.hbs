@@ -1,6 +1,16 @@
 <section id="editor">
 	<section id="editor-components">
-		
+		<div id="components-cateory">
+			{{view Ember.Select content=categories
+       			optionValuePath="content.id"
+       			optionLabelPath="content.name"
+       			selection=selectedCategory}}
+		</div>
+		<div id="components">
+			{{#each card in cardModels}}
+				{{view 'card-container' card=card}}
+			{{/each}}
+		</div>
 	</section>
 	<section id="editor-canvas">
 		<section id="simulator" {{bindAttr class=":selectable pageSelected:selected"}} {{action selectPage}}>
