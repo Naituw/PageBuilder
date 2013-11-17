@@ -1,7 +1,7 @@
 import Card from 'appkit/models/card';
 
 var CardView = Ember.View.extend({
-	classNames: ['card-view'],
+	classNameBindings: [':card-view'],
 	templatePartialName: function(){
 		if (!this.get('card.isLoaded')) return null;
 		var type = this.get('card.card_type');

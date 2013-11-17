@@ -92,6 +92,17 @@ Card.reopenClass({
 	}
 });
 
+Card.reopen({
+	pb_type_name: function(){
+		var t = Card.TYPES;
+		switch(this.get('card_type')) {
+			case t.ImageWithDoubleFieldDoubleLines: return '图片两字段两行Card';
+			case t.ImageWithDoubleFieldTripleLines: return '图片两字段三行Card';
+			default: return 'Card';
+		}
+	}.property('card_type'),
+});
+
 Card.adapter = Ember.FixtureAdapter.create();
 Card.primaryKey = 'itemid';
 

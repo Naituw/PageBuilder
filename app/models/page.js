@@ -25,10 +25,10 @@ Page.reopenClass({
 		path: 'show_style',
 		viewType: 'select',
 		options: [{
-			title:'气泡（默认）',
+			title:'通栏（默认）',
 			value:0,
 		}, {
-			title:'通栏',
+			title:'气泡',
 			value:1,
 		}],
 	}, {

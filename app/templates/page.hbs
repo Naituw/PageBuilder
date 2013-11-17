@@ -7,9 +7,11 @@
        			selection=selectedCategory}}
 		</div>
 		<div id="components">
-			{{#each card in cardModels}}
-				{{view 'card-container' card=card}}
-			{{/each}}
+			{{#if isLoaded}}
+				{{#each card in cardModels}}
+					{{view 'component-model' card=card page=this.model}}
+				{{/each}}
+			{{/if}}
 		</div>
 	</section>
 	<section id="editor-canvas">
@@ -24,7 +26,7 @@
 			{{#each config in selectedItem.configurables}}
 				<div class="inspector-config">
 					<h4>{{config.name}}</h4>
-					{{view 'config-container' config=config targetModel=this}}
+					{{view 'config-container' config=config targetModel=selectedItem}}
 				</div>
 			{{/each}}
 		</div>
