@@ -19,3 +19,7 @@ body > div {
 input:focus,select:focus,textarea:focus,button:focus {
     outline: none;
 }
+
+a:visited div {
+    border:inherit;
+}

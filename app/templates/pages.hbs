@@ -1,1 +1,34 @@
-Pages
+<section id="pages">
+	<header>
+		{{#if this.model.length}}
+			请选择一个或创建新Page开始编辑
+		{{else}}
+			请点击 “+” 号创建一个新Page
+		{{/if}}
+	</header>
+	<div id="page-list">
+		{{#each page in this.model}}
+			<div class="page-container">
+				<div class="page-cover">
+					{{#link-to 'page' page.containerid}}
+						<h5>{{#if page.title_top.length}}{{page.title_top}}{{else}}未命名Page{{/if}}</h5>
+					{{/link-to}}
+					<div class="page-delete" {{action 'deletePage' page}}>
+						删除此Page
+					</div>
+				</div>
+				<div class="page-info">
+					创建于{{date-time page.pb_create_at}}
+				</div>
+			</div>
+		{{/each}}
+		<div class="page-container">
+			<div class="page-cover">
+				<h5 class="new-page-sign">+</h5>
+			</div>
+			<div class="page-info">
+				点击创建一个新Page
+			</div>
+		</div>
+	</div>
+</section>

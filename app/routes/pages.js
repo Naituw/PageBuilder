@@ -1,6 +1,8 @@
+import Page from 'appkit/models/page';
+
 var PagesRoute = Ember.Route.extend({
-  model: function() {
-    return [];
+  model: function(params) {
+    return Page.find();
   }
 });
 
