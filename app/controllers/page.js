@@ -1,8 +1,13 @@
 import CardCategory from 'appkit/models/card_category';
 import Card from 'appkit/models/card';
+import CardCONFIGURABLES from 'appkit/models/card_config';
 
 var PageController = Em.ObjectController.extend({
 	selectedItem: null,
+	
+	pageChanged: function(){
+		this.set('selectedItem', null);
+	}.observes('model.containerid'),
 
 // components
 	categories: function(){
@@ -38,6 +43,25 @@ var PageController = Em.ObjectController.extend({
 	actions: {
 		selectPage: function(){
 			this.set('selectedItem', this.get('model'));
+		},
+		revertPage: function(){
+			var page = this.get('model');
+			page.get('cards').clear();
+			page.revert();
+		},
+		downloadPage: function(){
+
+		},
+		savePage: function(){
+			this.get('model').save();
+		},
+		exitEditor: function(){
+			this.transitionToRoute('pages');
+		},
+		removeSelectedItem: function(){
+			// only cards can be removed currently
+			this.get('model.cards').removeObject(this.get('selectedItem'));
+			this.set('selectedItem', null);
 		},
 	},
 });

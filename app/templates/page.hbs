@@ -19,6 +19,7 @@
 			<header>
 				<h3>{{title_top}}</h3>
 			</header>
+			{{view 'card-list' page=this.model}}
 		</section>
 	</section>
 	<section id="editor-inspector">
@@ -29,6 +30,11 @@
 					{{view 'config-container' config=config targetModel=selectedItem}}
 				</div>
 			{{/each}}
+			{{#if selectedItem.removeable}}
+				<div class="inspector-config">
+					<button class="inspector-remove-item" {{action removeSelectedItem}}>移除该对象</button>
+				</div>
+			{{/if}}
 		</div>
 	</section>
 </section>

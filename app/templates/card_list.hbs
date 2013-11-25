@@ -1,0 +1,6 @@
+{{#if view.page.isLoaded}}
+	{{#each card in view.page.cards}}
+		{{#unless card.hideForDragging}}{{view 'card-list-placeholder' listview=view}}{{/unless}}
+		{{view 'card-container' card=card page=view.page cardlist=view}}
+	{{/each}}
+{{/if}}
