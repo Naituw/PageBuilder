@@ -12,7 +12,16 @@ Card.reopenClass({
 	}],
 	SUB_CONFIGURABLES: {
 		ImageWithDoubleFieldDoubleLines: [{
-
+			name: '首行文字',
+			path: 'title_sub',
+		}, {
+			name: '描述',
+			path: 'desc',
+		}, {
+			name: '图片地址',
+			path: 'pic',
 		}],
 	},
 });
+
+export default Card.CONFIGURABLES;

@@ -1,4 +1,5 @@
 import PBModel from 'appkit/models/model';
+import Card from 'appkit/models/card';
 
 var attr = Ember.attr;
 var Page = PBModel.extend({
@@ -8,7 +9,8 @@ var Page = PBModel.extend({
 	page_type: attr('string'),
 	shared_text: attr('string'),
 	shared_text_qrcode: attr('string'),
-	cards: Ember.hasMany('card'),
+	cards: Ember.hasMany(Card, {'key': 'cards', 'embedded':true}),
+	pb_create_at: attr('number'), // milliseconds since 1900
 
 	configurables: function(){
 		return Page.CONFIGURABLES;
@@ -67,12 +69,21 @@ Page.FIXTURES = [{
 	'containerid': 1000,
 	'title_top': '理想国际大厦',
 	'show_style': 0,
+	'page_type': '02',
 	'cards': [],
+	'pb_create_at': 1381191330153,
 }, {
 	'containerid': 1001,
 	'title_top': '朔黄铁路大厦',
 	'show_style': 0,
 	'cards': [],
+	'pb_create_at': 1385111330153,
+}, {
+	'containerid': 1002,
+	'title_top': '泰鹏大厦',
+	'show_style': 1,
+	'cards': [],
+	'pb_create_at': 1385191330153,
 }];
 
 export default Page;

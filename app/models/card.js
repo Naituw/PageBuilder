@@ -14,13 +14,25 @@ var Card = PBModel.extend({
 
 	pb_model: false,
 	toJSON: function(){
-		var json = this.get('_data');
+		var json = this._super();
+		var keys = this.get('jsonKeys');
+		if (keys) {
+			for (var i = 0; i < keys.length; i++) {
+				var k = keys[i];
+				json[k] = this.get(k);
+			}
+		}
 		delete json.pb_model;
 		return json;
 	},
 	load: function(id, hash) {
 		this._super(id, hash);
-		this.setProperties(this.get('_data'));
+		var data = this.get('_data');
+		this.setProperties(data);
+
+		var keys = [];
+		for(var k in data) keys.push(k);		
+		this.set('jsonKeys', keys);
 	},
 	configurables: function(){
 		var types = Card.TYPES;
@@ -51,9 +63,19 @@ var Card = PBModel.extend({
 
 		return configs;
 	}.property('Card.CONFIGURABLES', 'Card.SUB_CONFIGURABLES', 'card_type'),
+	removeable: function(){
+		return true;
+	}.property().volatile(),
 });
 
 Card.reopenClass({
+	createWithMeta: function(hash){
+		var card = this.create(hash);
+		var keys = [];
+		for(var k in hash) keys.push(k);		
+		card.set('jsonKeys', keys);
+		return card;
+	},
 	TYPES: {
 		BasicInfo: 1,
 		AppsList: 2,

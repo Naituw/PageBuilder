@@ -1,7 +1,7 @@
 var IndexRoute = Ember.Route.extend({
-  model: function() {
-    return ['red', 'yellow', 'blue'];
-  }
+	beforeModel: function(){
+		this.transitionTo('pages');
+	},
 });
 
 export default IndexRoute;

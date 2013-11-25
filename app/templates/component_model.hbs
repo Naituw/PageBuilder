@@ -1,4 +1,4 @@
 {{#if view.card.isLoaded}}
-	{{view 'card-container' card=view.card page=view.page}}
-	{{view.card.pb_type_name}}
+	{{view 'card-container' card=view.card page=view.page isModel=true}}
+	<h4>{{view.card.pb_type_name}}</h4>
 {{/if}}
