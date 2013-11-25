@@ -6,4 +6,179 @@
 	height: 44px;
 	background-color: #4679bd;
 	border-bottom: 1px solid #1B3155;
+	position: relative;
+}
+
+#application-logo {
+	width: 350px;
+	height: 44px;
+	background: url(images/logo.png) no-repeat;
+	float: left;
+}
+
+#top-nav {
+	position: absolute;
+	top: 0;
+	bottom: 1px;
+	left: 351px;
+	right: 281px;
+	overflow: hidden;
+}
+
+#top-nav > ul {
+	list-style: none;
+	height: 44px;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	overflow: hidden;
+}
+
+#top-nav > ul > li {
+	margin-left: 1px;
+	display: block;
+	float: left;
+	z-index: 10;
+	position: relative;
+}
+
+#top-nav > ul > li > a {
+	height: 44px;
+	line-height: 44px;
+	background: #4072b4;
+	padding: 0 20px;
+	text-decoration: none;
+	color: white;
+	display: block;
+	font-size: 14px;
+	font-weight: 300;
+	cursor: pointer;
+}
+#top-nav > ul > li > a.highlighted {
+	background-color: #00A470;
+}
+#top-nav > ul > li > a:hover {
+	background-color: #3A66A0;
+}
+#top-nav > ul > li > a:active {
+	background-color: #305585;
+}
+
+#pages {
+	position: fixed;
+	top: 45px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #E6E6E6;
+	overflow: scroll;
+}
+
+#pages > header {
+	width: 100%;
+	height: 55px;
+	line-height: 55px;
+	font-size: 16px;
+	color: #666;
+	font-weight: 700;
+	text-align: center;
+	text-shadow: 0 1px 0 white;
+}
+
+#page-list {
+	width: 720px;
+	padding: 0px 0 40px;
+	margin: 0 auto;
+}
+
+#page-list .page-container {
+	float: left;
+	width: 200px;
+	padding: 20px;
+	height: 230px;
+	margin: 0;
+}
+
+#page-list .page-container .page-cover {
+	width: 198px;
+	height: 198px;
+	border: 1px solid #AAA;
+	background-color: white;
+	cursor: pointer;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+#page-list .page-container .page-cover:hover {
+	border-color: #4578C2;
+}
+#page-list .page-container .page-cover:active {
+	background-color: #F5F5F5;
+}
+
+#page-list .page-container .page-cover a {
+	display: table;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	text-decoration: none;
+}
+
+#page-list .page-container .page-cover h5 {
+	padding: 10px 30px;
+	font-size: 20px;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #888;
+}
+#page-list .page-container .page-cover h5.new-page-sign {
+	font-size: 80px;
+	line-height: 175px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: #BBB;
+}
+#page-list .page-container .page-cover:hover h5.new-page-sign {
+	color: #999;
+}
+
+#page-list .page-container .page-info {
+	padding-top: 10px;
+	font-size: 14px;
+	text-align: center;
+	color: #888;
+	text-shadow: 0 1px 0 white;
+}
+
+#page-list .page-container .page-cover .page-delete {
+	display: block;
+	position: absolute;
+	left: 3px;
+	right: 3px;
+	bottom: 3px;
+	height: 0px;
+	line-height: 30px;
+	color: white;
+	background-color: rgba(255, 0, 0, 0.6);
+	text-align: center;
+	font-size: 13px;
+	overflow: hidden;
+	-webkit-transition: all .2s;
+}
+#page-list .page-container .page-cover:hover .page-delete {
+	height: 30px;
+	-webkit-transition: all .2s;
+}
+#page-list .page-container .page-cover .page-delete:hover {
+	background-color: rgba(255, 0, 0, 0.7);
+}
+#page-list .page-container .page-cover .page-delete:active {
+	background-color: rgba(155, 0, 0, 0.7);
 }
