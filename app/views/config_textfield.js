@@ -9,14 +9,19 @@ var ConfigTextFieldView = Ember.TextField.extend({
 		var target = this.get('targetModel');
 		target.set(path, this.get('value'));
 	}.observes('value'),
+	
+	updateCurrentValue: function() {
+		var that = this;
+		var current = that.get(that.get('bindingPath'));
+		that.set('value', current);
+	},
 	didInsertElement: function(){
 		var that = this;
-		var updateCurrentValue = function(){
-			var current = that.get(that.get('bindingPath'));
-			that.set('value', current);
-		};
-		updateCurrentValue();
-		that.addObserver(that.get('bindingPath'), updateCurrentValue);
+		this.updateCurrentValue();
+		that.addObserver(that.get('bindingPath'), this.updateCurrentValue);
+	},
+	willDestroyElement: function(){
+		this.removeObserver(this.get('bindingPath'), this.updateCurrentValue);
 	},
 });
 
