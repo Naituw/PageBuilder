@@ -134,18 +134,16 @@ Card.FIXTURES = [{
 	'scheme': 'http://weibo.com',
 	'pb_model': true,
 
-	'title_sub': '标题标题标题标题标题',
-	'desc': '说明说明说明说明说明',
-	'pic': 'http://static.youku.com/user/img/avatar/50/45.jpg',
+	'title_sub': '这里是标题title_sub，最多一行，超出打点。这里是标题title_sub，最多一行，超出打点。',
+	'desc': '这里是说明desc，最多一行，超出打点。这里是说明desc，最多一行，超出打点。',
 }, {
 	'itemid': Card.TYPES.ImageWithDoubleFieldTripleLines,
 	'card_type': Card.TYPES.ImageWithDoubleFieldTripleLines,
 	'scheme': 'http://weibo.com',
 	'pb_model': true,
 
-	'title_sub': '标题标题标题标题标题',
-	'desc': '说明说明说明说明说明',
-	'pic': 'http://static.youku.com/user/img/avatar/50/45.jpg',
+	'title_sub': '这里是标题title_sub，最多两行，超出打点。这里是标题title_sub，最多两行，超出打点。',
+	'desc': '这里是说明desc，最多一行，超出打点。这里是说明desc，最多一行，超出打点。',
 }];
 
 export default Card;
