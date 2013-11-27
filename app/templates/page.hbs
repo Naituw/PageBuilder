@@ -1,3 +1,4 @@
+{{#if isLoaded}}
 <section id="editor">
 	<section id="editor-components">
 		<div id="components-cateory">
@@ -7,18 +8,31 @@
        			selection=selectedCategory}}
 		</div>
 		<div id="components">
-			{{#if isLoaded}}
-				{{#each card in cardModels}}
-					{{view 'component-model' card=card page=this.model}}
-				{{/each}}
-			{{/if}}
+			{{#each card in cardModels}}
+				{{view 'component-model' card=card page=this.model}}
+			{{/each}}
 		</div>
 	</section>
 	<section id="editor-canvas">
-		<section id="simulator" {{bindAttr class=":selectable pageSelected:selected"}} {{action selectPage}}>
-			<header>
+		<section id="simulator" {{bindAttr class=":selectable pageSelected:selected pb_shows_info:page-info-visible pb_shows_apps:page-apps-visible"}} {{action selectPage}}>
+			<header {{bind-attr class=":simulator-header pb_shows_info:info-visible"}}>
 				<h3>{{title_top}}</h3>
 			</header>
+			{{#if pb_shows_info}}
+				{{view 'page-info' pageInfo=this.model.pageInfo page=this.model}}
+			{{/if}}
+			{{#if pb_shows_apps}}
+				<div class="page-apps-container">
+					<div class="page-apps-list">
+						{{#each app in this.model.pb_page_apps}}
+							{{view 'page-app' app=app}}
+						{{/each}}
+						<div class="page-app" {{action createApp}}>
+							<div class="page-create-app">+</div>
+						</div>
+					</div>
+				</div>
+			{{/if}}
 			{{view 'card-list' page=this.model}}
 		</section>
 	</section>
@@ -38,3 +52,4 @@
 		</div>
 	</section>
 </section>
+{{/if}}

@@ -11,7 +11,7 @@
 			<div class="page-container">
 				<div class="page-cover">
 					{{#link-to 'page' page.containerid}}
-						<h5>{{#if page.title_top.length}}{{page.title_top}}{{else}}未命名Page{{/if}}</h5>
+						<h5>{{#if page.displayTitle.length}}{{page.displayTitle}}{{else}}未命名Page{{/if}}</h5>
 					{{/link-to}}
 					<div class="page-delete" {{action 'deletePage' page}}>
 						删除此Page
@@ -23,7 +23,7 @@
 			</div>
 		{{/each}}
 		<div class="page-container">
-			<div class="page-cover">
+			<div class="page-cover" {{action createPage}}>
 				<h5 class="new-page-sign">+</h5>
 			</div>
 			<div class="page-info">
