@@ -3,13 +3,12 @@
 <head>
   <title>App</title>
   
+  <meta charset="UTF-8">
+
   <!-- build:css(tmp/result) assets/app.min.css -->
   <link rel="stylesheet" href="/assets/app.css">
   <!-- endbuild -->
   
-
-  <!-- for more details visit: https://github.com/yeoman/grunt-usemin -->
-
   <!-- build:js(tmp/result) assets/vendor.min.js -->
 
     <script src="/vendor/jquery/jquery.js"></script>
@@ -71,6 +70,7 @@
   <!-- @if tests=false -->
   <script>
     window.App = require('appkit/app').create();
+    Ember.App = window.App;
   </script>
   <!-- @endif -->
 
