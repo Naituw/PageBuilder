@@ -4,4 +4,10 @@
 		<nav id="top-nav">{{outlet nav}}</nav>
 	</header>
 	{{outlet}}
+
+	{{#if Ember.App.loading}}
+		<div id="loading-dropblack">
+			<div id="loading-spinner" class="spinner"></div>
+		</div>
+	{{/if}}
 </section>

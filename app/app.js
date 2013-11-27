@@ -19,4 +19,20 @@ Ember.RSVP.configure('onerror', function(error) {
   }
 });
 
+App.reopen({
+  loadingCount: 0,
+  beginLoading:function(){
+    this.set('loadingCount', this.get('loadingCount') + 1);
+  },
+  endLoading: function(){
+    var count = this.get('loadingCount');
+    if (count > 0) {
+      this.set('loadingCount', count - 1);
+    }
+  },
+  loading: function(){
+    return this.get('loadingCount') > 0;
+  }.property('loadingCount'),
+});
+
 export default App;
