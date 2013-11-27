@@ -2,7 +2,7 @@ import Page from 'appkit/models/page';
 
 var PageRoute = Ember.Route.extend({
 	model: function(params) {
-		return Page.find(params.page_id);
+		return Page.fetch(params.page_id);
 	}, 
 	renderTemplate: function(){
 		this.render();
@@ -13,15 +13,18 @@ var PageRoute = Ember.Route.extend({
 	},
 	actions: {
 		willTransition: function(transition) {
-			var model = this.controllerFor('page').get('model');
+			var controller = this.controllerFor('page');
+			var model = controller.get('model');
 			if (model.get('isDirty')) 
 			{
 				if (!window.confirm('确定要离开吗？未保存的改动将会丢失！')) {
 					transition.abort();
 				}
 				else {
-					model.get('cards').clear(); // 旧数据有一个backingStore，会从中恢复
-					model.revert();
+					Em.run.later(this, function(){
+						window.location.reload();
+					}, 100);
+					//controller.revertModel();
 					return true;
 				}
 			} else {

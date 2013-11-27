@@ -40,28 +40,65 @@ var PageController = Em.ObjectController.extend({
 	pageSelected: function(){
 		return this.get('model') === this.get('selectedItem');
 	}.property('model','selectedItem'),
+	revertModel: function(){
+		Em.run.next(this, function(){
+			window.location.reload();
+		});
+		/*
+		var model = this.get('model');
+		var cards = model.get('cards');
+		var apps = model.get('pb_page_apps');
+		for (var i = cards.get('length') - 1; i >= 0; i--) {
+			var c = cards.objectAt(i);
+			if (c.get('isNew')) {
+				cards.removeAt(i);
+			}
+		}
+		for (var j = apps.get('length') - 1; j >= 0; j--) {
+			var a = apps.objectAt(j);
+			if (a.get('isNew')) {
+				apps.removeAt(j);
+			}
+		}
+		model.revert();*/
+	},
 	actions: {
 		selectPage: function(){
 			this.set('selectedItem', this.get('model'));
+			return false;
 		},
 		revertPage: function(){
-			var page = this.get('model');
-			page.get('cards').clear();
-			page.revert();
+			this.revertModel();
 		},
 		downloadPage: function(){
 
 		},
 		savePage: function(){
-			this.get('model').save();
+			Em.App.beginLoading();
+			this.get('model').save().then(function(){
+				Em.App.endLoading();
+			}, function(){
+				Em.App.endLoading();
+			});
 		},
 		exitEditor: function(){
 			this.transitionToRoute('pages');
 		},
 		removeSelectedItem: function(){
-			// only cards can be removed currently
+			// only cards & apps can be removed currently
 			this.get('model.cards').removeObject(this.get('selectedItem'));
+			this.get('model.pb_page_apps').removeObject(this.get('selectedItem'));
 			this.set('selectedItem', null);
+		},
+		createApp: function(){
+			this.get('model.pb_page_apps').create({
+				title: '标题',
+				scheme: 'http://weibo.com',
+			});
+			Em.run.later(this, function(){
+				this.set('selectedItem', this.get('model.pb_page_apps.lastObject'));
+			});
+			return false;
 		},
 	},
 });
