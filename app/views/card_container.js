@@ -1,8 +1,12 @@
 var CardContainerView = Ember.View.extend({
-	classNameBindings: [':card-container','isBubble:bubble-style:default-style', 'selectable', 'selected', 'card.hideForDragging:hide-for-dragging'],
+	classNameBindings: [':card-container','isBubble:bubble-style:default-style', 'card.hideForDragging:hide-for-dragging', 'showsTitle:title-visible'],
 	templateName: 'card_container',
 	attributeBindings: ['draggable'],
 	draggable: "true",
+	showsTitle: function(){
+		if (!this.get('isBubble')) return false;
+		return this.get('card.title.length') > 0;
+	}.property('card.title', 'isBubble'),
 	isBubble: function(){
 		return this.get('page.show_style') === 1;
 	}.property('page.show_style'),
