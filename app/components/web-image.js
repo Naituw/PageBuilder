@@ -1,13 +1,10 @@
 var WebImage = Ember.Component.extend({
-    tagName: 'img',
+    tagName: 'div',
     classNames: ['card-web-image'],
-    attributeBindings: ['src', 'style'],
-    src: function(){
-        return this.get('url');
-    }.property('url'),
+    attributeBindings: ['style'],
     style: function(){
-        return 'width:' + this.get('width') + 'px; height:' + this.get('height') + 'px;';
-    }.property('width', 'height'),
+        return 'width:' + this.get('width') + 'px; height:' + this.get('height') + 'px;' + 'background-image:url(' + this.get('url') + ')';
+    }.property('width', 'height', 'url'),
     width: 50,
     height: 50,
 });
