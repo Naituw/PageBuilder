@@ -9,8 +9,8 @@ Router.map(function() {
   });
 });
 
-Router.reopen({
-  location: 'history',
-});
+// Router.reopen({
+//   location: 'history',
+// });
 
 export default Router;
