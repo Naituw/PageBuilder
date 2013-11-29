@@ -8,6 +8,8 @@ var CardView = Ember.View.extend({
 		switch (type){
 			case Card.TYPES.ImageWithDoubleFieldDoubleLines: return 'image_doublefield_doublelines';
 			case Card.TYPES.ImageWithDoubleFieldTripleLines: return 'image_doublefield_triplelines';
+			case Card.TYPES.SingleText: return 'single_text';
+			case Card.TYPES.SingleLargePhoto: return 'single_large_photo';
 			default: return null;
 		}
 	}.property('card.card_type', 'card.isLoaded'),

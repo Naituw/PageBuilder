@@ -1,0 +1,10 @@
+<div class="single-text-card">
+	{{#if view.card.pic.length}}
+		<div class="single-text-card-left">
+			{{web-image url=view.card.pic width=25 height=25}}
+		</div>
+	{{/if}}
+	<div {{bind-attr style="view.card.desc_align_style" class=":single-text-card-right view.card.pic.length:pic-visible"}}>
+		{{view.card.desc}}{{#if view.card.desc_extr.length}}<span>{{view.card.desc_extr}}</span>{{/if}}
+	</div>
+</div>

@@ -34,6 +34,7 @@ var Card = PBModel.extend({
 		for(var k in data) keys.push(k);		
 		this.set('jsonKeys', keys);
 	},
+
 	configurables: function(){
 		var types = Card.TYPES;
 		if (!types) return [];
@@ -66,6 +67,13 @@ var Card = PBModel.extend({
 	removeable: function(){
 		return true;
 	}.property().volatile(),
+
+	desc_align_style: function(){
+		var a = this.get('desc_align');
+		if (!a) return '';
+		if (a === 'middle') return 'text-align:center;';
+		if (a === 'right') return 'text-align:right;';
+	}.property('desc_align'),
 });
 
 Card.reopenClass({
@@ -120,6 +128,8 @@ Card.reopen({
 		switch(this.get('card_type')) {
 			case t.ImageWithDoubleFieldDoubleLines: return '图片两字段两行Card';
 			case t.ImageWithDoubleFieldTripleLines: return '图片两字段三行Card';
+			case t.SingleLargePhoto: return '单张大图Card';
+			case t.SingleText: return '单行文字按钮';
 			default: return 'Card';
 		}
 	}.property('card_type'),
@@ -131,19 +141,39 @@ Card.primaryKey = 'itemid';
 Card.FIXTURES = [{
 	'itemid': Card.TYPES.ImageWithDoubleFieldDoubleLines,
 	'card_type': Card.TYPES.ImageWithDoubleFieldDoubleLines,
-	'scheme': 'http://weibo.com',
+	'scheme': 'sinaweibo://pageinfo?containerid=10012099788',
 	'pb_model': true,
 
 	'title_sub': '这里是标题title_sub，最多一行，超出打点。这里是标题title_sub，最多一行，超出打点。',
 	'desc': '这里是说明desc，最多一行，超出打点。这里是说明desc，最多一行，超出打点。',
+	'pic': ''
 }, {
 	'itemid': Card.TYPES.ImageWithDoubleFieldTripleLines,
 	'card_type': Card.TYPES.ImageWithDoubleFieldTripleLines,
 	'scheme': 'http://weibo.com',
 	'pb_model': true,
 
-	'title_sub': '这里是标题title_sub，最多两行，超出打点。这里是标题title_sub，最多两行，超出打点。',
-	'desc': '这里是说明desc，最多一行，超出打点。这里是说明desc，最多一行，超出打点。',
+	'title_sub': '演员:乔治·克鲁尼 / 桑德拉·布洛克 / 艾德·哈里斯 / 奥托·伊格内修森 / 保罗·夏尔马 / 艾米·沃伦 / 巴舍尔·萨维奇',
+	'desc': '地心引力',
+	'pic': 'http://mu1.sinaimg.cn/square.180/weiyinyue.music.sina.com.cn/movie_poster/99788.jpg',
+}, {
+	'itemid': Card.TYPES.SingleText,
+	'card_type': Card.TYPES.SingleText,
+	'scheme': 'http://weibo.com',
+	'pb_model': true,
+
+	'desc': '标题标题标题',
+	'desc_extr': '(1000)',
+	'pic': 'http://tp4.sinaimg.cn/1781387491/180/5661992330/0',
+	'desc_align': 'left',
+}, {
+	'itemid': Card.TYPES.SingleLargePhoto,
+	'card_type': Card.TYPES.SingleLargePhoto,
+	'scheme': 'sinaweibo://detail?mblogid=Ak3ZRCT0u',
+	'pb_model': true,
+
+	'pic': 'http://image2.sina.com.cn/music/web/ting2013/page/movie/kongzhi_gift.jpg',
+	'title_sub': '标题标题标题',
 }];
 
 export default Card;
