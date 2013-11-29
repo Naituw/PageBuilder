@@ -1,6 +1,7 @@
 import CardCategory from 'appkit/models/card_category';
 import Card from 'appkit/models/card';
 import CardCONFIGURABLES from 'appkit/models/card_config';
+import Page from 'appkit/models/page';
 
 var PageController = Em.ObjectController.extend({
 	selectedItem: null,
@@ -75,7 +76,8 @@ var PageController = Em.ObjectController.extend({
 		},
 		savePage: function(){
 			Em.App.beginLoading();
-			this.get('model').save().then(function(){
+			var page = this.get('model');
+			Page.adapter.saveRecord(page).then(function(){
 				Em.App.endLoading();
 			}, function(){
 				Em.App.endLoading();
