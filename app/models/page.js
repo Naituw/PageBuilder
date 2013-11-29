@@ -24,7 +24,11 @@ var Page = PBModel.extend({
 	}.property('pageInfo.nick', 'title_top'),
 
 	infoVisibleChange: function(){
-		if (this.get('pb_shows_info')) this.set('show_style', 1);
+		if (this.get('pb_shows_info')) {
+			this.set('show_style', 1);
+		} else {
+			this.set('pb_shows_apps', 0);
+		}
 	}.observes('pb_shows_info'),
 
 	toJSON: function(){
@@ -39,6 +43,7 @@ var Page = PBModel.extend({
 			page.pageInfo[key] = this.get(key);
 		}
 
+		page.pb_title = this.get('displayTitle');
 		page.cardlistInfo = page.pageInfo;
 
 		if (!this.get('pb_shows_apps')) {
@@ -100,6 +105,10 @@ Page.reopenClass({
 		name: '包含横排链接列表视图',
 		path: 'pb_shows_apps',
 		viewType: 'checkbox',
+		disable: {
+			path: 'pb_shows_info',
+			value: 0,
+		}
 	}, {
 		name: '分享默认文案',
 		path: 'shared_text',
