@@ -72,7 +72,12 @@ var PageController = Em.ObjectController.extend({
 			this.revertModel();
 		},
 		downloadPage: function(){
+			var json = this.get('model').toJSON();
+			var pageJSON = json.page;
+			var content = JSON.stringify(pageJSON);
 
+			var uriContent = "data:application/octet-stream," + window.encodeURIComponent(content);
+			var newWindow = window.open(uriContent, 'page_' + pageJSON.containerid + '.json');
 		},
 		savePage: function(){
 			Em.App.beginLoading();
@@ -88,8 +93,13 @@ var PageController = Em.ObjectController.extend({
 		},
 		removeSelectedItem: function(){
 			// only cards & apps can be removed currently
-			this.get('model.cards').removeObject(this.get('selectedItem'));
+			var cards = this.get('model.cards');
+			cards.removeObject(this.get('selectedItem'));
 			this.get('model.pb_page_apps').removeObject(this.get('selectedItem'));
+			for (var i = cards.get('length') - 1; i >= 0; i--) {
+				var card = cards.objectAt(i);
+				card.get('group').removeObject(this.get('selectedItem'));
+			}
 			this.set('selectedItem', null);
 		},
 		createApp: function(){
@@ -100,6 +110,12 @@ var PageController = Em.ObjectController.extend({
 			Em.run.later(this, function(){
 				this.set('selectedItem', this.get('model.pb_page_apps.lastObject'));
 			});
+			return false;
+		},
+
+		selectGroupItem: function(item, card){
+			if (card.get('pb_model')) return;
+			this.set('selectedItem', item);
 			return false;
 		},
 	},

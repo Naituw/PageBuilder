@@ -57,6 +57,42 @@ Card.reopenClass({
 			name: '图片URL',
 			path: 'pic',
 		}],
+		MultiLineText: [{
+			name: '内容文字',
+			path: 'desc',
+			viewType: 'text-view',
+		}, {
+			name: '来源文字',
+			path: 'source',
+		}],
+		Button: [{
+			name: '按钮标题',
+			path: 'desc',
+		}, {
+			name: '按钮样式',
+			path: 'show_type',
+			viewType: 'select',
+			options: [
+				{title: '普通', value: 0},
+				{title: '蓝色', value: 1},
+				{title: '绿色', value: 2},
+				{title: '红色', value: 3},
+				{title: '高亮白色', value: 4},
+			],
+		}],
+		SearchCard: [{
+			name: '搜索占位文字',
+			path: 'desc',
+		}],
+		GridButton: [{
+			name: '子按钮',
+			path: 'group',
+			viewType: 'add-button',
+			maxCount: 6,
+			itemDefault: {
+				title_sub: '标题',
+			},
+		}],
 	}, 
 });
 

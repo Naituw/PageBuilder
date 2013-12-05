@@ -17,12 +17,16 @@ CardCategory.FIXTURES = [{
 		Card.TYPES.ImageWithDoubleFieldDoubleLines,
 		Card.TYPES.ImageWithDoubleFieldTripleLines,
 		Card.TYPES.SingleLargePhoto,
+		Card.TYPES.MultiLineText,
 	],
 }, {
 	id: 2,
 	name: '按钮类型',
 	card_types: [
 		Card.TYPES.SingleText,
+		Card.TYPES.Button,
+		Card.TYPES.SearchCard,
+		Card.TYPES.GridButton,
 	],
 }];
 
