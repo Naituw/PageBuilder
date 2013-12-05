@@ -1,6 +1,8 @@
 {{#if card.isLoaded}}
-	{{#if view.showsTitle}}
-		<div class="card-title">{{view.card.title}}</div>
-	{{/if}}
-	<div {{bind-attr class=":card-view-wrapper view.selected:selected view.selectable:selectable"}}>{{view 'card' card=view.card page=view.page}}</div>
+	<div {{bind-attr class=":card-view-wrapper view.selected:selected view.selectable:selectable"}}>
+		{{#if view.showsTitle}}
+			<div class="card-title">{{view.card.title}}</div>
+		{{/if}}
+		{{view 'card' card=view.card page=view.page}}
+	</div>
 {{/if}}

@@ -1,0 +1,8 @@
+<div class="grid-button-view">
+	{{#each item in view.card.group}}
+		<div class="grid-button-item selectable" {{action selectGroupItem item card bubbles=false}}>
+			{{web-image url=item.pic width=36 height=36}}
+			<span>{{item.title_sub}}</span>
+		</div>
+	{{/each}}
+</div>

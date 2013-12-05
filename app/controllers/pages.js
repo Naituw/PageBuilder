@@ -18,7 +18,7 @@ var PagesController = Em.ArrayController.extend({
 				"pb_shows_info": 1,
 				"pb_shows_apps": 1,
 				"page_type": "01",
-				"show_style": 0,
+				"show_style": 1,
 			});
 			var self = this;
 			page.save().then(function(){

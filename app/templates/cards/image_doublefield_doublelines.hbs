@@ -1,7 +1,9 @@
-<div class="image-text-card">
-	<div class="image-text-card-left">
-		{{web-image url=view.card.pic width=60 height=60}}
-	</div>
+<div {{bind-attr class=":image-text-card view.card.pic.length:pic-visible"}}>
+	{{#if view.card.pic.length}}
+		<div class="image-text-card-left">
+			{{web-image url=view.card.pic width=60 height=60}}
+		</div>
+	{{/if}}
 	<div class="image-text-card-right">
 		<div class="image-text-card-title single-line">{{view.card.title_sub}}</div>
 		<div class="image-text-card-desc single-line">{{view.card.desc}}</div>
